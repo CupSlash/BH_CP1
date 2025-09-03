@@ -7,7 +7,6 @@ adjective2 = input("Wait a minute... I think I need a new adjective: ")
 plural_noun2 = input("Sorry, but I also need a new plural noun: ")
 number = input("Give me a number, 1-100: ")
 noun2 = input("I need a second noun: ")
-social_security = input("What's your social security number: ")
 
 sentence1 = "\nThis morning, my " + adjective1 + " alarm clock didn't go off, so I rushed out the door wearing " + plural_noun1 + " on my feet."
 sentence2 = " At school my " + noun1 + " exploded during chemistry class, which caused a " + adjective2 + " mess."
