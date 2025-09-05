@@ -1,5 +1,13 @@
-print("What is your first and last name: ")
+#BH 2nd idiot_proof.py
+name = input("What is your first and last name: ").strip().capitalize()
 
-print("What is your phone number: ")
+number = input("Please input your phone number ").strip()
+word = "-"
 
-print("What is your GPA: ")
+gpa = float(input("What's your GPA: "))
+
+print("\n", name)
+
+print("\n", number.replace(word, " "))
+
+print("\n", gpa)
