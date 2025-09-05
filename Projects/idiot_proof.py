@@ -5,6 +5,7 @@ number = input("Please input your phone number ").strip()
 word = "-"
 
 gpa = float(input("What's your GPA: "))
+gpa = round(gpa, 1)
 
 print("\n", name)
 
