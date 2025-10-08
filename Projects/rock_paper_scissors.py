@@ -9,21 +9,21 @@ if Begin == "y":
 elif Begin == "n":
     game = False
 else:
-    print('That is not an option, please type either "y" of "n"')
+    print('That is not an option, please type either "y" or "n"')
 
 if game == False:
     print("Okay, goodbye!")
 
 Bot_score = 0
 User_score = 0
-score = (Bot_score, '-', User_score)
+score = (Bot_score, User_score)
 
 while game:
-    score = (Bot_score, "-", User_score)
+    score = (Bot_score, User_score)
     print("The score is now", score)
     User = input("The next round has started! Do you choose rock, paper, or scissors?")
     Bot = random.choice(choices)
-    print("I chose ", Bot)
+    print("I chose", Bot)
     if User == "rock":
         if Bot == "paper":
             print("Paper beats rock! I win!")
