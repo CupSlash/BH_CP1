@@ -39,4 +39,4 @@ While battling = True:
         print("The Monster starts the battle. It's turn is starting now.")
     if user_first = True:
         user_attack = input("Your choices are, 1 for Normal Attack, 2 for Wild Attack (you can double the damage but you will also take damage), 3 for Drink a healing potion (regain 9 health), and 4 for Flee (You may or may not get away)")
-            if user_attack = "Normal"
+            if user_attack = "Normal":
