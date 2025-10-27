@@ -2,6 +2,7 @@
 import random
 user_first = False
 battling = True
+mon_win = False
 #USER STATS STAGE
 mon_health = 100
 health = 0
