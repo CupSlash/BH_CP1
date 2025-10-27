@@ -55,6 +55,8 @@ while battling == True:
             elif mon_health >= 1 and health <= 0:
                 mon_win = True
                 battling = False
+            else:
+                continue
         elif user_attack == "3":
             health += 9
             print("You're health is now", health)
