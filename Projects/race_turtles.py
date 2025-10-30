@@ -21,6 +21,7 @@ pen.goto(400,-500)
 pen.right(270)
 pen.pendown()
 pen.forward(1000)
+del pen
 
 #Create a game with 5 turtles, each a different color
 
@@ -50,41 +51,38 @@ indigo_turtle.setpos(0,-300)
 
 #Use a loop to move turtles forward a random number of steps each round
 
-indigo_steps = random.randint(1,10)
-green_steps = random.randint(1,10)
-yellow_steps = random.randint(1,10)
-orange_steps = random.randint(1,10)
-red_steps = random.randint(1,10)
-
 while no_winner:
+    indigo_steps = random.randint(1,39)
+    green_steps = random.randint(1,39)
+    yellow_steps = random.randint(1,39)
+    orange_steps = random.randint(1,39)
+    red_steps = random.randint(1,39)
     red_turtle.forward(red_steps)
-    orange_turtle.forward(red_steps)
-    yellow_turtle.forward(red_steps)
-    green_turtle.forward(red_steps)
-    indigo_turtle.forward(red_steps)
-    if red_turtle in (400, 300):
-        winner = red_turtle
+    orange_turtle.forward(orange_steps)
+    yellow_turtle.forward(yellow_steps)
+    green_turtle.forward(green_steps)
+    indigo_turtle.forward(indigo_steps)
+    if red_turtle.xcor() > 400:
+        winner = {True, red_turtle}
+    elif orange_turtle.xcor() > 400:
+        winner = {True,orange_turtle}
+    elif yellow_turtle.xcor() > 400:
+        winner = {True,yellow_turtle}
+    elif green_turtle.xcor() > 400:
+        winner = {True,green_turtle}
+    elif indigo_turtle.xcor() > 400:
+        winner = {True, indigo_turtle}
+    else:
+        pass
+    if winner[0]:
         no_winner = False
-    if red_turtle in (400, 300):
-        winner = red_turtle
-        no_winner = False
-    if red_turtle in (400, 300):
-        winner = red_turtle
-        no_winner = False
-    if red_turtle in (400, 300):
-        winner = red_turtle
-        no_winner = False
-    if red_turtle in (400, 300):
-        winner = red_turtle
-        no_winner
+        #Announce the winner either on the turtle screen or in the terminal
+        print("The winner is", winner[1], "!")
     else:
         pass
 
 
-#Announce the winner either on the turtle screen or in the terminal
-
-print("The winner is", winner, "!")
-
+turtle.done()
 #Make sure the turtles' movement and race logic are correctly implemented
 #Use functions to organize code, e.g., one for setting up the race, one for moving turtles, and one for determining the winner
 #Test the game to ensure it runs smoothly and correctly identifies the winner (minimum of 5 times)
