@@ -4,7 +4,7 @@ import random
 import turtle
 screen = turtle.Screen()
 screen.setup(1000,1000)
-
+grid = []
 #Maze needs to be at least 6x6 
 
 def create_wall():
@@ -25,6 +25,25 @@ create_wall()
 def create_maze():
     maze_artist = turtle.Turtle()
     maze_artist.penup()
+
+
+def create_maze_grid(rows, cols):
+    for i in range(rows):
+        row = []
+        for j in range(cols):
+            cell = {
+                "visited": False,
+                "walls": {
+                    "top": True,
+                    "bottom": True,
+                    "left": True,
+                    "right": True
+                }
+            }
+            row.append(cell)
+        grid.append(row)
+    return grid
+create_maze_grid(6,6)
 
 def create_route(grid):
     route = []
@@ -57,34 +76,13 @@ def create_route(grid):
                 target_cell_col = col + 1
             else:
                 continue
-        
         current_cell = grid[row][col]
         target_cell = grid[target_cell_row][target_cell_col]
-        if target_cell["visited"]:
-            
-        if not moved:
-            route.pop()
-
-def create_maze_grid(rows, cols):
-    grid = []
-    for i in range(rows):
-        row = []
-        for j in range(cols):
-            cell = {
-                "visited": False,
-                "walls": {
-                    "top": True,
-                    "bottom": True,
-                    "left": True,
-                    "right": True
-                }
-            }
-            row.append(cell)
-        grid.append(row)
-    return grid
-create_maze_grid(6,6)
-
-
+        if target_cell in grid:
+            if not moved:
+                route.pop()
+                route += target_cell
+create_route(grid)
 
 # Use nested loops to create a list of lists representing the maze grid (outer list will be rows, inner lists will be columns)
 # Each cell in the grid can be represented as a dictionary
