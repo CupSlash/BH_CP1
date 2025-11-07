@@ -2,8 +2,8 @@
 
 import random
 import turtle
-num_rows = 6
-num_cols = 7
+num_rows = 287
+num_cols = 287
 screen_width = 1000
 screen_height = 1000
 screen = turtle.Screen()
