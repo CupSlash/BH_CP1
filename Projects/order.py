@@ -68,7 +68,8 @@ while side2_order == False:
     else:
         print("Please choose from the menu.")
 #Tip
-while tip <= 10:
+tip = float(input("Give me a tip."))
+while tip < 10:
     tip = float(input("Give me a tip."))
     total += tip
 #tax
