@@ -5,12 +5,10 @@ nums = []
 print("Welcome to the flexible calculator!")
 #get their numbers and operation
 operation = input("Which operation would you like to perform? sum, average, max, min, product: ")
-number = input("What numbers would you like to use? (type done when done): ")
-while number != "done":
-    number = input("What numbers would you like to use? (type done when done): ")
-    if number != int:
-        break
+number = int(input("What numbers would you like to use? (type done when done): "))
+while number == int:
     nums.append(number)
+    number = input("What numbers would you like to use? (type done when done): ")
 #If statements? For each operation 
 while operation != "sum" or "average" or "max" or "min" or "product":
     if operation == "sum": 
@@ -34,7 +32,7 @@ while operation != "sum" or "average" or "max" or "min" or "product":
         print(nums[0])
     elif operation == "product":
         multiplied_nums = 1
-        for i in multiplied_nums:
+        for i in nums:
             multiplied_nums *= i
         print(multiplied_nums)
     else:
