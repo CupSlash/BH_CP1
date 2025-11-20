@@ -1,40 +1,46 @@
 #BH 2nd Flexible Calc.
+#imports
 import math 
-nums = []
+import statistics
+#functions
+def get_operation():
+    while True:
+        operation = input("Which operation would you like to perform? sum, average, max, min, product: ")
+        if operation in ["sum", "average", "max", "min", "product"]:
+            return operation
+        else:
+            print("That is not an option. Please try again.")
+def get_numbers():
+    nums = []
+    while True:
+        number = input("What numbers would you like to use? (type done when done): ")
+        if number != "done":
+            number = float(number)
+            nums.append(number)
+        else:
+            break 
+    return nums
+def calculate(nums, operation):
+        #sum
+    if operation == "sum": 
+        print(sum(nums))
+        #average
+    elif operation == "average":
+        print(statistics.mean(nums))
+        #max
+    elif operation == "max":
+        print(max(nums))
+        #min
+    elif operation == "min":
+        print(min(nums))
+        #product
+    elif operation == "product":
+        print(math.prod(nums))
+    else:
+        pass
 #introduce user
 print("Welcome to the flexible calculator!")
-#get their numbers and operation
-operation = input("Which operation would you like to perform? sum, average, max, min, product: ")
-number = int(input("What numbers would you like to use? (type done when done): "))
-while number == int:
-    nums.append(number)
-    number = input("What numbers would you like to use? (type done when done): ")
-#If statements? For each operation 
-while operation != "sum" or "average" or "max" or "min" or "product":
-    if operation == "sum": 
-        added_nums = 0
-        for i in nums:
-            added_nums += i
-        print(added_nums)
-    elif operation == "average":
-        nums_unaveraged = 0
-        num_of_nums = 0
-        for i in nums:
-            nums_unaveraged += i
-            num_of_nums += 1
-        nums_averaged = nums_unaveraged / num_of_nums
-        print(nums_averaged)
-    elif operation == "max":
-        nums.sort()
-        print(nums[-1])
-    elif operation == "min":
-        nums.sort()
-        print(nums[0])
-    elif operation == "product":
-        multiplied_nums = 1
-        for i in nums:
-            multiplied_nums *= i
-        print(multiplied_nums)
-    else:
-        print("That is not an option")
-        operation = input("Which operation would you like to perform? sum, average, max, min, product: ")
+#THE ACTUAL PROGRAM
+operation = get_operation()
+nums = get_numbers()
+calculate(nums, operation)
