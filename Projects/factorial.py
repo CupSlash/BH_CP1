@@ -14,19 +14,19 @@ while True:
         user_num = int(user_num)
         break
 #Define factorial(num):
-def factorial(num):
+def factorial(user_num):
 #make variable org_num = num
-    org_num = num
+    org_num = user_num
 #make multi_num = num - 1
-    multi_num = num - 1
+    multi_num = user_num - 1
 #make for loop for length of multi_num
 #for i in range(multi_num):
     for i in range(multi_num):
 #num *= multi_num
-        num *= multi_num
+        user_num *= multi_num
 #multi_num - 1 #Subtract one each loop from multi_num return original number org_num factorial: num
         multi_num - 1
-    return f"Original number: {org_num}, Factorial: {num}"
+    return f"Original number: {org_num}, Factorial: {user_num}"
 #call function
 #print(factorial(user_num))
 print(factorial(user_num))
