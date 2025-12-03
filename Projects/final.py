@@ -1,85 +1,124 @@
 #BH 2nd final.py
 #import random
-#Define Fox
-#Define Musk Ox
-#Define Walrus
-#Define Cubs
-#Define Mother
-#Define Father
-#Define Enemy Factor
-#Define Planar ARCTIC 4D-12
-#Define Radio
-#Define Medkit
-#Define Item Factor
-#Define Jack Location
+#Random Enemies = {
+    #Fox = {
+    #   Health:31,
+    #   Attack:5
+    #}
+    #Musk_Ox = {
+    #   Health:50,
+    #   Attack:15
+    #}
+    #Walrus = {
+    #   Health:80,
+    #   Attack:30
+    #}
+#}
+#Final Bosses = {
+    #Cubs = {
+    #   Health:50,
+    #   Attack:15
+    #}
+    #Mother = {
+    #   Health:80,
+    #   Attack:30
+    #}
+    #Father = {
+    #   Health:120,
+    #   Attack:50}
+#}
+#items = [Planar ARCTIC 4D-12, Radio, Medkit]
 #Locations = {
-#   "Cove" = {
-#       "enemies": Enemy Factor,
-#       "items": Item Factor,
+#   Cove = {
+#       enemies:random.random_enemies(),
+#       items:random.items(),
 #       Jack: False
 #   }
-#   "Island" = {
-#       "enemies": Enemy Factor,
-#       "items": Item Factor,
+#   Island = {
+#       enemies:random.random_enemies(),
+#       items:random.items(),
 #       Jack: False
 #   }
-#   "Beach" = {
-#       "enemies": Enemy Factor,
-#       "items": Item Factor,
+#   Beach = {
+#       enemies:random.random_enemies(),
+#       items:ramdom.items(),
 #       Jack: False
 #   }
-#   "Mines" = {
-#       "enemies": Enemy Factor,
-#       "items": Item Factor,
+#   Mines = {
+#       enemies:random.random_enemies(),
+#       items:random.items(),
 #       Jack: False
 #   }
-#   "Basin" = {
-#       "enemies": Enemy Factor,
-#       "items": Item Factor,
+#   Basin = {
+#       enemies:random.random_enemies(),
+#       items:random.items(),
 #       Jack: False
 #   }
-#   "Lake" = {
-#       "enemies": Enemy Factor,
-#       "items": Item Factor,
+#   Lake = {
+#       enemies:random.random_enemies(),
+#       items:random.items,
 #       Jack: False
 #   }
-#   "Mountain" = {
-#       "enemies": Enemy Factor,
-#       "items": Item Factor,
+#   Mountain = {
+#       enemies:random.random_enemies(),
+#       items:random.items,
 #       Jack: False
 #   }
-#   "Peninsula" = {
-#       "enemies": Enemy Factor,
-#       "items": Item Factor,
+#   Peninsula = {
+#       enemies:random.random_enemies(),
+#       items:random.items(),
 #       Jack: False
 #   }
-#   "City" = {
-#       "items": Item Factor
+#   City = {
+#       items:random.items,
+#       Jack: False
 #   }
 #}
-#Set player location to city
-#Set player items list
-#Set user health to 100, warmth to 100, and sanity to 100.
-#Game is True, Player win is False, Combat is False,
+#Jack_location = random.locations(Cove, Island, Beach, Mines, Basin, Lake, Mountain, Peninsula)
+#If Jack_location == Cove:
+#   Jack = True
+#If Jack_location == Island:
+#   Jack = True
+#If Jack_location == Beach:
+#   Jack = True
+#If Jack_location == Mines:
+#   Jack = True
+#If Jack_location == Basin:
+#   Jack = True
+#If Jack_location == Lake:
+#   Jack = True
+#If Jack_location == Mountain:
+#   Jack = True
+#If Jack_location == Peninsula:
+#   Jack = True
+#location = City
+#inventory = []
+#health = 100
+#warmth = 100
+#sanity = 100
+#Game = True
+#Combat = False
+#Player_win = False
 #print("Welcome to 'The Final Project: RPG' Your name is John, and you're on a vacation to Baffin Island, Canada with your best friend Jack. Unfortunately you lost sight of Jack and must find him. The 9 locations you may enter are The City, Basin, Mines, Beach, Island, Cover, Bay, Lake, Mountain, and Peninsula. On your journey you must manage sanity, warmth, and health in order to survive. Enjoy the adventure and watch out for enemies! + 1 Knife")
 
 
 
-#While game is true
+
+#While game == True
 #   turn_choice = input("You are currently in", location, "your stats are", health, warmth, sanity, ".\n You can choose to leave (l) or use an item (i)")
 #   if turn choice == "l" location_choice = input(locations, "Where would you like to go?")
 #       if location_choice != locations print(That is not a location)
 #       else: 
-#           if "enemies" in location choice != None 
+#           if enemies in location choice != None 
 #   elif turn choice == "i" item_choice = input("Your items are", inventory, "What would you like to use?")
 #       if item_choice != inventory print("That item is not in your inventory.")
 #       else: use item
 #   else print("That is not an option.")
 
-#   While combat is true
-#       enemy_move = random.randint(0, 5) + attack boost
+#   While combat == True 
+#       enemy_move = random.randint(0, 5) + attack
 #       user_move = input("your stats are", stats, ". Your available moves are stab, defend, and evade. What would you like to do?")
-#       If user_move is stab enemy_health -= 20
+#       If user_move is stab enemy_health -= 30
 #       Elif user_move is defend enemy_move -= attack boost and enemy_health -= random.randint(0, 3)
 #       Elif user_move is evade evade_chance is random.randint(1, 2)
 #       Else
@@ -101,9 +140,10 @@
 
 
 
-#If player win is False
+
+#If player_win = False:
 #   print("You Died!")
-#Else
+#Else:
 #   print("You beat the game! Congratulations!")
 
 
