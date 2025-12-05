@@ -1,59 +1,116 @@
 #BH 2nd final.py
 #import random
+import random
+health = 100
+warmth = 100
+sanity = 100
+inventory = []
+location = locations.City
 #cubs_alive = True
+cubs_alive = True
 #mother_alive = True
+mother_alive = True
 #father_alive = True
+father_alive = True
 #Game = True
+game = True
 #Combat = False
+combat = False
 #Player_won = False
+player_won = False
 
 # def use_item(player, item):
+def use_item(player, item):
 #     player.warmth += item.warmth
+    player.warmth += item.warmth
 #     player.sanity += item.sanity
+    player.sanity += item.sanity
 #     player.health += item.health
+    player.health += item.health
 
 # def prompt_use_item_or_continue(player):
+def prompt_use_item_or_continue(player):
 #     user_choice = input("Would you like to use an item (i), or continue looking for Jack (c)")
+    user_choice = input("would you like to use an item (i), or continue looking for Jack (c)?")
 #     if user_choice == "i":
+    if user_choice == "i":
 #         item_choice = input("Your items are", player.inventory, "What would you like to use?")
+        item_choice = input("Your items are", player.inventory, "What would you like to use?")
 #         if item_choice not in player.inventory:
+        if item_choice not in player.inventory:
 #             print("That item is not in your inventory.")
+            print("That item is not in your inventory.")
 #         else:
+        else:
 #             use_item(player, item_choice)
+            use_item(player, item_choice)
 
 # def fight_cubs():
+def fight_cubs():
     #     evade_chance = 3
+    evade_chance = 3
     #     enemy_health = cub_health
+    enemy_health = cubs.health
     #     While true:
+    while True:
     #       print("You think you hear Jack in a cave, but suddenly, a group of small polar bears come running at you!")
+        print("You think you hear Jack in a cave, but suddenly, a group of small polar bears come running at you!")
     #       enemy_move = random.randint(0, 5) + cub attack
+        enemy_move = random.randint(0, 5) + cubs.attack
     #       user_move = input("your stats are", stats, ". Your available moves are stab, defend, and evade. What would you like to do?")
-    #       If user_move == stab 
+        user_move = input("your stats are", player, ". Your available moves are stab, defend, and evade. What would you like to do?")
+    #       If user_move == stab
+        if user_move == "stab": 
     #           enemy_health -= 30
+            enemy_health -= 30
     #       Elif user_move == defend
+        elif user_move == "defend":
     #           enemy_move -= attack boost and enemy_health -= random.randint(0, 3)
+            enemy_move -= cubs.attack
+            enemy_health -= random.randint(0, 3)
     #       Elif user_move == evade 
+        elif user_move == "evade":
     #           evade_chance = random.randint(1, 2)
+            evade_chance = random.randint(1, 2)
     #       Else:
+        else:
     #           print("That isn't an option")
-    #       If evade chance != 1 
+            print("That isn't an option")
+    #       If evade chance != 1:
+        if evade_chance != 1:
     #           user_health -= enemy_move
+            user_health -= enemy_move
     #       If user_health <= 0:
+            if user_health <= 0:
     #           return False
+                return False
     #       If enemy_health <= 0:
+            if enemy_health <= 0:
     #           print("You have defeated the cubs!")
+                print("You have defeated the cubs!")
     #           return True
+                return True
 
 # def fight_mother():
+def fight_mother():
 #       While True:
+    while True:
 #           print("Before you can enter the cave you hear a loud rumbling and the mother bear appears! Get ready for combat!")
+        print("Before you can enter the cave you hear a loud rumbling and the mother bear appears! Get ready for combat!")
 #           evade_chance = 3
+        evade_chance = 3
     #       enemy_health = mother_health
+        enemy_health = mother.health
     #       enemy_move = random.randint(0, 5) + mother attack
+        enemy_move = random.randint(0, 5) + mother.attack
     #       user_move = input("your stats are", stats, ". Your available moves are stab, defend, and evade. What would you like to do?")
+        user_move = input("your stats are", stats, ". Your available moves are stab, defend, and evade. What would you like to do?")
     #       If user_move == stab 
+        if user_move == "stab":
     #           enemy_health -= 30
+                enemy_health -= 30
     #       Elif user_move == defend
+        elif 
     #           enemy_move -= attack boost and enemy_health -= random.randint(0, 3)
     #       Elif user_move == evade 
     #           evade_chance = random.randint(1, 2)
@@ -108,11 +165,19 @@
 
 
 #player = {
+player = {
 #   health: 100,
+    health: 100,
 #   warmth: 100,
+    warmth: 100,
 #   sanity: 100
+    sanity: 100,
 #   inventory: []
+    inventory: [],
 #   location: locations.City
+    location: locations.City
+#}
+}
 
 #Random Enemies = {
     #Fox = {
