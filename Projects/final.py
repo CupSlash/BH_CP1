@@ -58,81 +58,206 @@ def combat(player, enemy):
 
          
 # def fight_bosses(player):
+def fight_bosses(player):
 #     print("Wild cubs appear from behind some rocks and you must enter combat!")
+    print("Wild cubs appear from behind some rocks and you must enter combat!")
 #     player_won = combat(player, cubs)
+    player_won = combat(player, cubs)
 #     if (player_won):
+    if (player_won):
 #         prompt_use_item_or_continue(player)
+        prompt_use_item_or_continue(player)
 #     else:
+    else:
 #         return player_won
+        return player_won
 #
 #     print("You continue on your journey and reach a cave. As you approach, a mother bear appears and you must enter combat!")
+    print("You continue on your journey and reach a cave. As you approach, a mother bear appears and you must enter combat!")
 #     player_won = combat(player, mother)
+    player_won = combat(player, mother)
 #     if (player_won):
+    if (player_won):
 #         prompt_use_item_or_continue(player)
+        prompt_use_item_or_continue(player)
 #     else:
+    else:
 #         return player_won
+        return player_won
 #
 #     print("You walk into the cave, searching for Jack. You find him! This gives your sanity a slight boost! A final enemy appears from around the corner and you enter combat!")
-#     player.sanity += 5
+    print("You walk into the cave, searching for Jack. You find him! A final enemy appears from around the corner and you enter combat!")
 #     player_won = combat(player, father)
+    player_won = combat(player, father)
 #     return player_won
+    return player_won
 
 
 #items = {
+items = {
 #   Planar_ARCTIC_4D-12: {warmth: 25, sanity: 0, health: 0},
+    "Planar_ARCTIC_4D-12": {"warmth": 25, "sanity": 0, "health": 0},
 #   Radio: {warmth: 0, sanity: 25, health: 0}, 
+    "Radio": {"warmth": 0, "sanity": 25, "health": 0},
 #   Medkit: {warmth: 0, sanity: 0, health: 25}
+    "Medkit": {"warmth": 0, "sanity": 0, "health": 25}
 #}
+}
 
-#Locations = {
-#   Cove = {
-#       enemy: random regular enemy,
-#       item:random.items(),
-#       Jack: False
-#   }
-#   Island = {
-#       enemy: random regular enemy,
-#       item:random.items(),
-#       Jack: False
-#   }
-#   Beach = {
-#       enemy: random regular enemy,
-#       item:ramdom.items(),
-#       Jack: False
-#   }
-#   Mines = {
-#       enemy:random regular enemy,
-#       item:random.items(),
-#       Jack: False
-#   }
-#   Basin = {
-#       enemy:random regular enemy,
-#       item:random.items(),
-#       Jack: False
-#   }
-#   Lake = {
-#       enemy:random regular enemy,
-#       item:random.items,
-#       Jack: False
-#   }
-#   Mountain = {
-#       enemy:random regular enemy,
-#       item:random.items,
-#       Jack: False
-#   }
-#   Peninsula = {
-#       enemy:random regular enemy,
-#       item:random.items(),
-#       Jack: False
-#   }
-#   City = {
-#       enemy: None,
-#       item:random.items,
-#       Jack: False
-#   }
+#regular_enemies = {
+regular_enemies = {
+    #Fox = {
+    fox = {
+    #   Health:31,
+        "health":31,
+    #   Attack:5
+        "attack":5
+    #}
+    },
+    #Musk_Ox = {
+    musk_ox = {
+    #   Health:50,
+    "health":50,
+    #   Attack:15
+    "attack":15
+    #}
+    },
+    #Walrus = {
+    walrus = {
+    #   Health:80,
+    "health":80,
+    #   Attack:30
+    "attack":30
+    #}
+    },
 #}
+}
+
+#boss_enemies = {
+boss_enemies = {
+    #Cubs = {
+    cubs = {
+    #   Health:50,
+    "health":50,
+    #   Attack:15
+    "attack":15
+    #}
+    },
+    #Mother = {
+    mother = {
+    #   Health:80,
+    "health":80,
+    #   Attack:30
+    "attack":30
+    #}
+    },
+    #Father = {
+    father = {
+    #   Health:120,
+    "health":120,
+    #   Attack:50}
+    "attack":50
+#}
+    }
+}
+#Locations = {
+locations = {
+#   Cove = {
+    cove = {
+#       enemy: random regular enemy,
+        "enemy":random.regular_enemies(),
+#       item:random.items(),
+        "item":random.items(),
+#       Jack: False
+        "jack":False
+#   }
+    },
+#   Island = {
+    island = {
+#       enemy: random regular enemy,
+        "enemy":random.regular_enemies(),
+#       item:random.items(),
+        "item":random.items(),
+#       Jack: False
+        "jack":False
+#   }
+    },
+#   Beach = {
+    beach = {
+#       enemy: random regular enemy,
+        "enemy":random.regular_enemies(),
+#       item:ramdom.items(),
+        "item":random.items(),
+#       Jack: False
+        "jack":False
+#   }
+    },
+#   Mines = {
+    mines = {
+#       enemy:random regular enemy,
+        "enemy":random.regular_enemies(),
+#       item:random.items(),
+        "item":random.items(),
+#       Jack: False
+        "jack":False
+#   }
+    },
+#   Basin = {
+    basin = {
+#       enemy:random regular enemy,
+        "enemy":random.regular_enemies(),
+#       item:random.items(),
+        "item":random.items(),
+#       Jack: False
+        "jack":False
+#   }
+    },
+#   Lake = {
+    lake = {
+#       enemy:random regular enemy,
+        "enemy":random.regular_enemies(),
+#       item:random.items,
+        "item":random.items(),
+#       Jack: False
+        "jack":False
+#   }
+    },
+#   Mountain = {
+    mountain = {
+#       enemy:random regular enemy,
+        "enemy":random.regular_enemies(),
+#       item:random.items,
+        "item":random.items(),
+#       Jack: False
+        "jack":False
+#   }
+    },
+#   Peninsula = {
+    peninsula = {
+#       enemy:random regular enemy,
+    "enemy":random.regular_enemies(),
+#       item:random.items(),
+    "item":random.items(),
+#       Jack: False
+    "jack":False
+#   }
+    },
+#   City = {
+    city = {
+#       enemy: None,
+        "enemy":None,
+#       item:random.items,
+        "item":random.items(),
+#       Jack: False
+        "jack":False
+#   }
+    }
+#}
+}
 #Jack_location = random.choice([locations.Cove, locations.Island, locations.Beach, locations.Mines, locations.Basin, locations.Lake, locations.Mountain, locations.Peninsula])
+jack_location = random.choice([locations.Cove, locations.Island, locations.Beach, locations.Mines, locations.Basin, locations.Lake, locations.Mountain, locations.Peninsula])
 #Jack_location.Jack = True
+jack_location.jack = True
 
 #player = {
 player = {
@@ -145,61 +270,51 @@ player = {
 #   inventory: []
     "inventory": [],
 #   location: locations.City
-    location: locations.City
+    "location": locations.City
 #}
 }
-
-#regular_enemies = {
-    #Fox = {
-    #   Health:31,
-    #   Attack:5
-    #}
-    #Musk_Ox = {
-    #   Health:50,
-    #   Attack:15
-    #}
-    #Walrus = {
-    #   Health:80,
-    #   Attack:30
-    #}
-#}
-
-#boss_enemies = {
-    #Cubs = {
-    #   Health:50,
-    #   Attack:15
-    #}
-    #Mother = {
-    #   Health:80,
-    #   Attack:30
-    #}
-    #Father = {
-    #   Health:120,
-    #   Attack:50}
-#}
 
 
 
 #print("Welcome to 'The Final Project: RPG'. Your name is John, and you're on a vacation to Baffin Island, Canada, with your best friend Jack. Unfortunately, you lost sight of Jack and must find him. The nine locations you may enter are The City, Basin, Mines, Beach, Island, Cover, Bay, Lake, Mountain, and Peninsula. On your journey you must manage sanity, warmth, and health in order to survive. Enjoy the adventure and watch out for enemies! + 1 Knife")
+print("Welcome to 'The Final Project: RPG'. Your name is John, and you're on a vacation to Baffin Island, Canada, with your best friend Jack. Unfortunately, you lost sight of Jack and must find him. The nine locations you may enter are The City, Basin, Mines, Beach, Island, Cover, Bay, Lake, Mountain, and Peninsula. On your journey you must manage sanity, warmth, and health in order to survive. Enjoy the adventure and watch out for enemies! + 1 Knife")
 #While True:
+while True:
 #   turn_choice = input("You are currently in", location, "your stats are", health, warmth, sanity, ".\n You can choose to leave (l), explore for Jack (e), or use an item (i)")
-#   if turn choice == "l" 
+    turn_choice = input("You are currently in", player.location, "your stats are", player.health, player.warmth, player.sanity, ".\n You can choose to leave (l), explore (e), or use an item (i)")
+#   if turn choice == "l":
+    if turn_choice == "l":
 #       location_choice = input(locations, "Where would you like to go?")
+        location_choice = input(locations, "Where would you like to go?")
 #       if location_choice != locations: 
+        if location_choice != locations:
 #           print("That is not a location")
+            print("That is not a location")
 #       else: 
+        else:
 #           get location dictionary from locations
+            if location_choice = "cove":
 #           player_location = selected location dictionary
+            player_location = location_choice
 #           if player_location.enemy != None:
 #              player_won_combat = combat(player, player_location.enemy)
 #              if (!player_won_combat):
 #                  break
 #   elif turn choice == "e":
+    elif turn_choice == "e":
+        if item.location != None:
+            inventory.append(item.location)
+            item.location = None
 #       if player_location.Jack:
+        if player_location.jack:
 #           player_won = fight_bosses()
+            player_won = fight_bosses()
 #           break
+            break
 #       else:
+        else:
 #           print("Jack is not here.")
+            print("Jack is not here.")
 #   elif turn choice == "i" 
 #       prompt_use_item(player)
 #   else:
