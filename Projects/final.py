@@ -107,7 +107,7 @@ items = {
 #regular_enemies = {
 regular_enemies = {
     #Fox = {
-    fox = {
+    "fox":{
     #   Health:31,
         "health":31,
     #   Attack:5
@@ -115,19 +115,19 @@ regular_enemies = {
     #}
     },
     #Musk_Ox = {
-    musk_ox = {
+    "musk_ox":{
     #   Health:50,
-    "health":50,
+        "health":50,
     #   Attack:15
-    "attack":15
+        "attack":15
     #}
     },
     #Walrus = {
-    walrus = {
+    "walrus":{
     #   Health:80,
-    "health":80,
+        "health":80,
     #   Attack:30
-    "attack":30
+        "attack":30
     #}
     },
 #}
@@ -136,7 +136,7 @@ regular_enemies = {
 #boss_enemies = {
 boss_enemies = {
     #Cubs = {
-    cubs = {
+    "cubs":{
     #   Health:50,
     "health":50,
     #   Attack:15
@@ -144,7 +144,7 @@ boss_enemies = {
     #}
     },
     #Mother = {
-    mother = {
+    "mother":{
     #   Health:80,
     "health":80,
     #   Attack:30
@@ -152,7 +152,7 @@ boss_enemies = {
     #}
     },
     #Father = {
-    father = {
+    "father":{
     #   Health:120,
     "health":120,
     #   Attack:50}
@@ -163,91 +163,91 @@ boss_enemies = {
 #Locations = {
 locations = {
 #   Cove = {
-    cove = {
+    "cove":{
 #       enemy: random regular enemy,
-        "enemy":random.regular_enemies(),
+        "enemy":random.choice(list(regular_enemies.keys())),
 #       item:random.items(),
-        "item":random.items(),
+        "item":random.choice(list(regular_enemies.keys())),
 #       Jack: False
         "jack":False
 #   }
     },
 #   Island = {
-    island = {
+    "island":{
 #       enemy: random regular enemy,
-        "enemy":random.regular_enemies(),
+        "enemy":random.choice(list(regular_enemies.keys())),
 #       item:random.items(),
-        "item":random.items(),
+        "item":random.choice(list(regular_enemies.keys())),
 #       Jack: False
         "jack":False
 #   }
     },
 #   Beach = {
-    beach = {
+    "beach":{
 #       enemy: random regular enemy,
-        "enemy":random.regular_enemies(),
+        "enemy":random.choice(list(regular_enemies.keys())),
 #       item:ramdom.items(),
-        "item":random.items(),
+        "item":random.choice(list(regular_enemies.keys())),
 #       Jack: False
         "jack":False
 #   }
     },
 #   Mines = {
-    mines = {
+    "mines":{
 #       enemy:random regular enemy,
-        "enemy":random.regular_enemies(),
+        "enemy":random.choice(list(regular_enemies.keys())),
 #       item:random.items(),
-        "item":random.items(),
+        "item":random.choice(list(regular_enemies.keys())),
 #       Jack: False
         "jack":False
 #   }
     },
 #   Basin = {
-    basin = {
+    "basin":{
 #       enemy:random regular enemy,
-        "enemy":random.regular_enemies(),
+        "enemy":random.choice(list(regular_enemies.keys())),
 #       item:random.items(),
-        "item":random.items(),
+        "item":random.choice(list(regular_enemies.keys())),
 #       Jack: False
         "jack":False
 #   }
     },
 #   Lake = {
-    lake = {
+    "lake":{
 #       enemy:random regular enemy,
-        "enemy":random.regular_enemies(),
+        "enemy":random.choice(list(regular_enemies.keys())),
 #       item:random.items,
-        "item":random.items(),
+        "item":random.choice(list(regular_enemies.keys())),
 #       Jack: False
         "jack":False
 #   }
     },
 #   Mountain = {
-    mountain = {
+    "mountain":{
 #       enemy:random regular enemy,
-        "enemy":random.regular_enemies(),
+        "enemy":random.choice(list(regular_enemies.keys())),
 #       item:random.items,
-        "item":random.items(),
+        "item":random.choice(list(regular_enemies.keys())),
 #       Jack: False
         "jack":False
 #   }
     },
 #   Peninsula = {
-    peninsula = {
+    "peninsula":{
 #       enemy:random regular enemy,
-    "enemy":random.regular_enemies(),
+        "enemy":random.choice(list(regular_enemies.keys())),
 #       item:random.items(),
-    "item":random.items(),
+        "item":random.choice(list(regular_enemies.keys())),
 #       Jack: False
-    "jack":False
+        "jack":False
 #   }
     },
 #   City = {
-    city = {
+    "city":{
 #       enemy: None,
         "enemy":None,
 #       item:random.items,
-        "item":random.items(),
+        "item":random.choice(list(regular_enemies.keys())),
 #       Jack: False
         "jack":False
 #   }
@@ -255,9 +255,9 @@ locations = {
 #}
 }
 #Jack_location = random.choice([locations.Cove, locations.Island, locations.Beach, locations.Mines, locations.Basin, locations.Lake, locations.Mountain, locations.Peninsula])
-jack_location = random.choice([locations.Cove, locations.Island, locations.Beach, locations.Mines, locations.Basin, locations.Lake, locations.Mountain, locations.Peninsula])
-#Jack_location.Jack = True
-jack_location.jack = True
+jack_location = random.choice(list(locations.keys()))
+if jack_location == "cove":
+    "jack".cove = True---------
 
 #player = {
 player = {
@@ -270,7 +270,7 @@ player = {
 #   inventory: []
     "inventory": [],
 #   location: locations.City
-    "location": locations.City
+    "location": locations.city-----------
 #}
 }
 
@@ -293,9 +293,11 @@ while True:
 #       else: 
         else:
 #           get location dictionary from locations
-            if location_choice = "cove":
-#           player_location = selected location dictionary
-            player_location = location_choice
+            if location_choice == "cove":
+#               player_location = selected location dictionary
+                player_location = location_choice
+            if location_choice == "island":
+                player_location = location_choice
 #           if player_location.enemy != None:
 #              player_won_combat = combat(player, player_location.enemy)
 #              if (!player_won_combat):
@@ -316,22 +318,46 @@ while True:
 #           print("Jack is not here.")
             print("Jack is not here.")
 #   elif turn choice == "i" 
+    elif turn_choice == "i":
 #       prompt_use_item(player)
+        prompt_use_item(player)
 #   else:
+    else:
 #       print("That is not an option.")
+        print("That is not an option")
 #   health += 5
+    health += 5
 #   Warmth -= 1
+    warmth -= 1
 #   If Warmth <= 20, Sanity -= 1
+    if warmth <= 20:
+        sanity -= 1
 #   If Health <= 20, Sanity -= 1
+    if health <= 20:
+        sanity -= 1
 #   If Warmth >= 20, Sanity += 1
+    if warmth >= 20:
+        sanity += 1
 #   If Health >= 20, Sanity += 1
+    if health >= 20:
+        sanity += 1
 #   If Warmth <= 0, Health -= 1
+    if warmth <= 0:
+        health -= 1
 #   If Sanity <= 0, Health -= 1
+    if sanity <= 0:
+        health -= 1
 #   If Health == 0, break
+    if health == 0:
+        break
 
 
 
 # If player_won:
+if player_won:
 #   print("You beat the game! Congratulations!")
+    print("Yoou beat the game! Congratulations!")
 # else
+else:
 #   print("You Died!")
+    print("You died!")
