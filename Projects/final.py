@@ -9,14 +9,14 @@ def use_item(player, item):
 #     player.warmth += item.warmth
     player["warmth"] += item["warmth"]
 #     player.sanity += item.sanity
-    player.sanity += item.sanity-
+    player["sanity"] += items["sanity"]
 #     player.health += item.health
-    player.health += item.health-
+    player["health"] += item["health"]
 
 def prompt_use_item(player):
-    item_choice = input("Your items are", player.inventory-, "What would you like to use?")
+    item_choice = input(f"Your items are {player['inventory']} ,What would you like to use?")
 #         if item_choice not in player.inventory:
-    if item_choice not in player.inventory-:
+    if item_choice not in player["inventory"]:
 #             print("That item is not in your inventory.")
         print("That item is not in your inventory.")
 #         else:
@@ -35,9 +35,9 @@ def prompt_use_item_or_continue(player):
 
 def combat(player, enemy):
     evade_chance = 3
-    enemy_health = enemy.health
+    enemy_health = enemy["health"]
     while True:
-        enemy_move = random.randint(0, 5) + enemy.attack
+        enemy_move = random.randint(0, 5) + enemy["attack"]
         player_move = input("your stats are", player, ". Your available moves are stab, defend, and evade. What would you like to do?")
         if player_move == "stab": 
             enemy_health -= 30
@@ -49,11 +49,11 @@ def combat(player, enemy):
         else:
             print("That isn't an option")
         if evade_chance != 1:
-            player.health -= enemy_move
-        if player.health <= 0:
+            player["health"]-= enemy_move
+        if player["health"] <= 0:
             return False
         if enemy_health <= 0:
-            print("You have defeated the", enemy.name, "!")
+            print("You have defeated the", enemy["name"], "!")
             return True
 
          
@@ -282,11 +282,11 @@ print("Welcome to 'The Final Project: RPG'. Your name is John, and you're on a v
 #While True:
 while True:
 #   turn_choice = input("You are currently in", location, "your stats are", health, warmth, sanity, ".\n You can choose to leave (l), explore for Jack (e), or use an item (i)")
-    turn_choice = input(f"You are currently in the {player['location']} your stats are health:{player['health']}, warmth:{player['warmth']}, sanity:{player['sanity']}. \n You can choose to leave (l), explore (e), or use an item (i)")
+    turn_choice = input(f"You are currently in the {player['location']} your stats are health:{player['health']}, warmth:{player['warmth']}, sanity:{player['sanity']}. \n You can choose to leave (l), explore (e), or use an item (i):")
 #   if turn choice == "l":
     if turn_choice == "l":
 #       location_choice = input(locations, "Where would you like to go?")
-        location_choice = input(locations, "Where would you like to go?")
+        location_choice = input(f"Here are the available locations, {locations}. Where would you like to go?")
 #       if location_choice != locations: 
         if location_choice != locations:
 #           print("That is not a location")
@@ -305,11 +305,11 @@ while True:
 #                  break
 #   elif turn choice == "e":
     elif turn_choice == "e":
-        if item.location != None:
-            inventory.append(item.location)
-            item.location = None
+        if locations.get("item") != None:
+            "inventory"["append"](items["location"])
+            items["location"] = None
 #       if player_location.Jack:
-        if player_location.jack:
+        if player["location"]['jack']:
 #           player_won = fight_bosses()
             player_won = fight_bosses()
 #           break
