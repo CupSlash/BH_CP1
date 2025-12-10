@@ -7,16 +7,16 @@ player_won = False
 # def use_item(player, item):
 def use_item(player, item):
 #     player.warmth += item.warmth
-    player.warmth += item.warmth
+    player["warmth"] += item["warmth"]
 #     player.sanity += item.sanity
-    player.sanity += item.sanity
+    player.sanity += item.sanity-
 #     player.health += item.health
-    player.health += item.health
+    player.health += item.health-
 
 def prompt_use_item(player):
-    item_choice = input("Your items are", player.inventory, "What would you like to use?")
+    item_choice = input("Your items are", player.inventory-, "What would you like to use?")
 #         if item_choice not in player.inventory:
-    if item_choice not in player.inventory:
+    if item_choice not in player.inventory-:
 #             print("That item is not in your inventory.")
         print("That item is not in your inventory.")
 #         else:
@@ -167,7 +167,7 @@ locations = {
 #       enemy: random regular enemy,
         "enemy":random.choice(list(regular_enemies.keys())),
 #       item:random.items(),
-        "item":random.choice(list(regular_enemies.keys())),
+        "item":random.choice(list(items.keys())),
 #       Jack: False
         "jack":False
 #   }
@@ -177,7 +177,7 @@ locations = {
 #       enemy: random regular enemy,
         "enemy":random.choice(list(regular_enemies.keys())),
 #       item:random.items(),
-        "item":random.choice(list(regular_enemies.keys())),
+        "item":random.choice(list(items.keys())),
 #       Jack: False
         "jack":False
 #   }
@@ -187,7 +187,7 @@ locations = {
 #       enemy: random regular enemy,
         "enemy":random.choice(list(regular_enemies.keys())),
 #       item:ramdom.items(),
-        "item":random.choice(list(regular_enemies.keys())),
+        "item":random.choice(list(items.keys())),
 #       Jack: False
         "jack":False
 #   }
@@ -197,7 +197,7 @@ locations = {
 #       enemy:random regular enemy,
         "enemy":random.choice(list(regular_enemies.keys())),
 #       item:random.items(),
-        "item":random.choice(list(regular_enemies.keys())),
+        "item":random.choice(list(items.keys())),
 #       Jack: False
         "jack":False
 #   }
@@ -207,7 +207,7 @@ locations = {
 #       enemy:random regular enemy,
         "enemy":random.choice(list(regular_enemies.keys())),
 #       item:random.items(),
-        "item":random.choice(list(regular_enemies.keys())),
+        "item":random.choice(list(items.keys())),
 #       Jack: False
         "jack":False
 #   }
@@ -217,7 +217,7 @@ locations = {
 #       enemy:random regular enemy,
         "enemy":random.choice(list(regular_enemies.keys())),
 #       item:random.items,
-        "item":random.choice(list(regular_enemies.keys())),
+        "item":random.choice(list(items.keys())),
 #       Jack: False
         "jack":False
 #   }
@@ -227,7 +227,7 @@ locations = {
 #       enemy:random regular enemy,
         "enemy":random.choice(list(regular_enemies.keys())),
 #       item:random.items,
-        "item":random.choice(list(regular_enemies.keys())),
+        "item":random.choice(list(items.keys())),
 #       Jack: False
         "jack":False
 #   }
@@ -237,7 +237,7 @@ locations = {
 #       enemy:random regular enemy,
         "enemy":random.choice(list(regular_enemies.keys())),
 #       item:random.items(),
-        "item":random.choice(list(regular_enemies.keys())),
+        "item":random.choice(list(items.keys())),
 #       Jack: False
         "jack":False
 #   }
@@ -247,7 +247,7 @@ locations = {
 #       enemy: None,
         "enemy":None,
 #       item:random.items,
-        "item":random.choice(list(regular_enemies.keys())),
+        "item":random.choice(list(items.keys())),
 #       Jack: False
         "jack":False
 #   }
@@ -255,9 +255,10 @@ locations = {
 #}
 }
 #Jack_location = random.choice([locations.Cove, locations.Island, locations.Beach, locations.Mines, locations.Basin, locations.Lake, locations.Mountain, locations.Peninsula])
-jack_location = random.choice(list(locations.keys()))
-if jack_location == "cove":
-    "jack".cove = True---------
+location_dicts_without_city = list(locations.values())
+location_dicts_without_city.remove(locations["city"])
+jack_location = random.choice(location_dicts_without_city)
+jack_location["jack"] = True
 
 #player = {
 player = {
@@ -270,18 +271,18 @@ player = {
 #   inventory: []
     "inventory": [],
 #   location: locations.City
-    "location": locations.city-----------
+    "location": "city"
 #}
 }
 
 
 
 #print("Welcome to 'The Final Project: RPG'. Your name is John, and you're on a vacation to Baffin Island, Canada, with your best friend Jack. Unfortunately, you lost sight of Jack and must find him. The nine locations you may enter are The City, Basin, Mines, Beach, Island, Cover, Bay, Lake, Mountain, and Peninsula. On your journey you must manage sanity, warmth, and health in order to survive. Enjoy the adventure and watch out for enemies! + 1 Knife")
-print("Welcome to 'The Final Project: RPG'. Your name is John, and you're on a vacation to Baffin Island, Canada, with your best friend Jack. Unfortunately, you lost sight of Jack and must find him. The nine locations you may enter are The City, Basin, Mines, Beach, Island, Cover, Bay, Lake, Mountain, and Peninsula. On your journey you must manage sanity, warmth, and health in order to survive. Enjoy the adventure and watch out for enemies! + 1 Knife")
+print("Welcome to 'The Final Project: RPG'. Your name is John, and you're on a vacation to Baffin Island, Canada, with your best friend Jack. Unfortunately, you lost sight of Jack and must find him. The nine locations you may enter The City, Basin, Mines, Beach, Island, Cover, Bay, Lake, Mountain, and Peninsula. On your journey you must manage sanity, warmth, and health in order to survive. Enjoy the adventure and watch out for enemies! + 1 Knife")
 #While True:
 while True:
 #   turn_choice = input("You are currently in", location, "your stats are", health, warmth, sanity, ".\n You can choose to leave (l), explore for Jack (e), or use an item (i)")
-    turn_choice = input("You are currently in", player.location, "your stats are", player.health, player.warmth, player.sanity, ".\n You can choose to leave (l), explore (e), or use an item (i)")
+    turn_choice = input(f"You are currently in the {player['location']} your stats are health:{player['health']}, warmth:{player['warmth']}, sanity:{player['sanity']}. \n You can choose to leave (l), explore (e), or use an item (i)")
 #   if turn choice == "l":
     if turn_choice == "l":
 #       location_choice = input(locations, "Where would you like to go?")
