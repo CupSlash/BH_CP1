@@ -14,7 +14,7 @@ def use_item(player, item):
     player["health"] += item["health"]
 
 def prompt_use_item(player):
-    item_choice = input(f"Your items are {player['inventory']} ,What would you like to use?")
+    item_choice = input(f"Your items are {player['inventory']}. What would you like to use?")
 #         if item_choice not in player.inventory:
     if item_choice not in player["inventory"]:
 #             print("That item is not in your inventory.")
@@ -62,7 +62,7 @@ def fight_bosses(player):
 #     print("Wild cubs appear from behind some rocks and you must enter combat!")
     print("Wild cubs appear from behind some rocks and you must enter combat!")
 #     player_won = combat(player, cubs)
-    player_won = combat(player, cubs)
+    player_won = combat(player, ["cubs"])
 #     if (player_won):
     if (player_won):
 #         prompt_use_item_or_continue(player)
@@ -75,7 +75,7 @@ def fight_bosses(player):
 #     print("You continue on your journey and reach a cave. As you approach, a mother bear appears and you must enter combat!")
     print("You continue on your journey and reach a cave. As you approach, a mother bear appears and you must enter combat!")
 #     player_won = combat(player, mother)
-    player_won = combat(player, mother)
+    player_won = combat(player, ["mother"])
 #     if (player_won):
     if (player_won):
 #         prompt_use_item_or_continue(player)
@@ -88,7 +88,7 @@ def fight_bosses(player):
 #     print("You walk into the cave, searching for Jack. You find him! This gives your sanity a slight boost! A final enemy appears from around the corner and you enter combat!")
     print("You walk into the cave, searching for Jack. You find him! A final enemy appears from around the corner and you enter combat!")
 #     player_won = combat(player, father)
-    player_won = combat(player, father)
+    player_won = combat(player, ["father"])
 #     return player_won
     return player_won
 
@@ -286,30 +286,44 @@ while True:
 #   if turn choice == "l":
     if turn_choice == "l":
 #       location_choice = input(locations, "Where would you like to go?")
-        location_choice = input(f"Here are the available locations, {locations}. Where would you like to go?")
-#       if location_choice != locations: 
-        if location_choice != locations:
-#           print("That is not a location")
-            print("That is not a location")
-#       else: 
+        location_choice = input(f"The available locations are cove, island, beach, mines, basin, lake, mountain, peninsula, and city. Where would you like to go?")
+        if location_choice == "cove":
+#           player_location = selected location dictionary
+            player["location"] = location_choice
+            if ["enemy"] in "cove":
+                combat(player, "location"["enemy"])
+                del "location"["enemy"]
+            if ["location"]("item") != None:---
+                ["inventory"].append("item"["location"])
+                del "location"["item"]
+        elif location_choice == "island":
+            player["location"] = location_choice
+        elif location_choice == "beach":
+            player["location"] = location_choice
+        elif location_choice == "mines":
+            player["location"] = location_choice
+        elif location_choice == "basin":
+            player["location"] = location_choice
+        elif location_choice == "lake":
+            player["location"] = location_choice
+        elif location_choice == "mountain":
+            player["location"] = location_choice
+        elif location_choice == "peninsula":
+            player["location"] = location_choice
+        elif location_choice == "city":
+            player["location"] = location_choice
         else:
-#           get location dictionary from locations
-            if location_choice == "cove":
-#               player_location = selected location dictionary
-                player_location = location_choice
-            if location_choice == "island":
-                player_location = location_choice
+            print("that is not an existing location.")
+
+
 #           if player_location.enemy != None:
 #              player_won_combat = combat(player, player_location.enemy)
 #              if (!player_won_combat):
 #                  break
 #   elif turn choice == "e":
     elif turn_choice == "e":
-        if locations.get("item") != None:
-            "inventory"["append"](items["location"])
-            items["location"] = None
 #       if player_location.Jack:
-        if player["location"]['jack']:
+        if "location" == jack_location:
 #           player_won = fight_bosses()
             player_won = fight_bosses()
 #           break
@@ -327,29 +341,29 @@ while True:
 #       print("That is not an option.")
         print("That is not an option")
 #   health += 5
-    health += 5
+    player["health"] += 5
 #   Warmth -= 1
-    warmth -= 1
+    player["warmth"] -= 1
 #   If Warmth <= 20, Sanity -= 1
-    if warmth <= 20:
-        sanity -= 1
+    if player["warmth"] <= 20:
+        player["sanity"] -= 1
 #   If Health <= 20, Sanity -= 1
-    if health <= 20:
-        sanity -= 1
+    if player["health"] <= 20:
+        player["sanity"] -= 1
 #   If Warmth >= 20, Sanity += 1
-    if warmth >= 20:
-        sanity += 1
+    if player["warmth"] >= 20:
+        player["sanity"] += 1
 #   If Health >= 20, Sanity += 1
-    if health >= 20:
-        sanity += 1
+    if player["health"] >= 20:
+        player["sanity"] += 1
 #   If Warmth <= 0, Health -= 1
-    if warmth <= 0:
-        health -= 1
+    if player["warmth"] <= 0:
+        player["health"] -= 1
 #   If Sanity <= 0, Health -= 1
-    if sanity <= 0:
-        health -= 1
+    if player["sanity"] <= 0:
+        player["health"] -= 1
 #   If Health == 0, break
-    if health == 0:
+    if player["health"] == 0:
         break
 
 
@@ -357,7 +371,7 @@ while True:
 # If player_won:
 if player_won:
 #   print("You beat the game! Congratulations!")
-    print("Yoou beat the game! Congratulations!")
+    print("You beat the game! Congratulations!")
 # else
 else:
 #   print("You Died!")
