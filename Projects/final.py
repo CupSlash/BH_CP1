@@ -346,7 +346,9 @@ while True:
             new_location_enemy = new_location["enemy"]
             print(f"A wild {new_location_enemy['name']} appears!")
             player_won_combat = combat(player, new_location_enemy)
-            if not player_won_combat:
+            if player_won_combat:
+                new_location["enemy"] = None
+            else:
                 break
         if new_location["item"] != None:
             player["inventory"].append(new_location["item"])
