@@ -308,7 +308,6 @@ location_dicts_without_city = list(locations.values())
 location_dicts_without_city.remove(locations["city"])
 jack_location = random.choice(location_dicts_without_city)
 jack_location["jack"] = True
-print(f"Jack is located at the {jack_location['name']}.")
 
 #player = {
 player = {
