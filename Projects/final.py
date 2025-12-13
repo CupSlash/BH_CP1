@@ -138,21 +138,28 @@ items = [
         "health": 35
     },
     {
-        "name":"full meal",
+        "name":"cast",
+        "description":"a warm cast that can help heal broken bones and provide warmth",
+        "warmth": 20,
+        "sanity": 5,
+        "health": 75
+    },
+    {
+        "name":"feast",
         "description":"a large dinner that provides sanity, health, and warmth",
         "warmth": 30,
         "sanity": 30,
         "health": 50
     },
     {
-        "name":"quick meal",
+        "name":"meal",
         "description":"a small dinner that provides sanity, health, and warmth",
         "warmth": 20,
         "sanity": 20,
         "health": 20
     },
     {
-        "name":"quick snack",
+        "name":"snack",
         "description":"a very light snack that provides sanity, health, and warmth",
         "warmth": 10,
         "sanity": 10,
@@ -162,65 +169,65 @@ items = [
 regular_enemies = [
     {
         "name":"Fox",
-        "health":31,
-        "attack":10
-    },
-    {
-        "name":"Harp Seal",
-        "health":50,
-        "attack":5
-    },
-    {
-        "name":"Arctic Hare",
-        "health":25,
+        "health":30,
         "attack":8
     },
     {
-        "name":"Snowy Owl",
-        "health":35,
+        "name":"Caribou",
+        "health":40,
         "attack":10
     },
     {
+        "name":"Lynx",
+        "health":40,
+        "attack":12
+    },
+    {
+        "name":"Harp Seal",
+        "health":40,
+        "attack":5
+    },
+    {
+        "name":"Hare",
+        "health":15,
+        "attack":6
+    },
+    {
+        "name":"Owl",
+        "health":30,
+        "attack":4
+    },
+    {
         "name":"Alpha Wolf",
-        "health":50,
-        "attack":50
+        "health":40,
+        "attack":38
     },
     {
         "name":"Arctic Wolf",
         "health":35,
-        "attack":29
-    },
-    {
-        "name":"Grizzly Bear",
-        "health":70,
-        "attack":40
-    },
-    {
-        "name":"Musk Ox",
-        "health":50,
-        "attack":15
+        "attack":28
     },
     {
         "name":"Walrus",
-        "health":80,
-        "attack":29
+        "health":70,
+        "attack":25
     },
 ]
 boss_enemies = [
     {
         "name": "Cubs",
-        "health":50,
-        "attack":15
+        "health":20,
+        "attack":10
     },
     {
         "name":"Mother",
-        "health":80,
-        "attack":29
+        "health":40,
+        "attack":20
     },
     {
         "name":"Father",
-        "health":120,
-        "attack":50
+        "health":80,
+        "attack":40
     }
 ]
 locations = {
@@ -284,9 +291,9 @@ location_dicts_without_city.remove(locations["city"])
 jack_location = random.choice(location_dicts_without_city)
 jack_location["jack"] = True
 player = {
-    "health": 100,
-    "warmth": 100,
-    "sanity": 100,
+    "health": 150,
+    "warmth": 150,
+    "sanity": 150,
     "inventory": [],
     "location": locations["city"]
 }
