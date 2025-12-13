@@ -13,39 +13,39 @@ def prompt_use_item(player):
     item_names = []
     for item in player["inventory"]:
         item_names.append(item['name'])
-    item_choice = input(f"Your items are {', '.join(item_names)}. What would you like to use?")
+    item_choice = input(f"Your items are {', '.join(item_names)}. What would you like to use?").lower().strip()
     item = next((item for item in player["inventory"] if item['name'] == item_choice), None)
     if item is None:
         print("That item is not in your inventory.")
     else:
         use_item(player, item)
 def prompt_use_item_or_continue(player):
-    player_choice = input("Would you like to use an item (i), or continue looking for Jack (c)?")
+    player_choice = input("Would you like to use an item (i), or continue looking for Jack (c)?").lower().strip()
     if player_choice == "i":
         prompt_use_item(player)
 def combat(player, enemy):
     while True:   
         evade_chance = False
         enemy_move = random.randint(0, 5) + enemy["attack"]
-        player_move = input(f"Your health is {player['health']} and the enemy's health is {enemy['health']}. Your available moves are stab, defend, and evade. What would you like to do?")
-        if player_move == "stab": 
+        player_move = input(f"Your health is {player['health']} and the enemy's health is {enemy['health']}. You can try to evade (e), defend (d), or stab (s). What would you like to do?").lower().strip()
+        if player_move == "s": 
             enemy["health"] -= 30
             print("You stabbed the enemy and did 30 damage!")
-        elif player_move == "defend":
+        elif player_move == "d":
             enemy_move -= enemy["attack"]
             enemy["health"] -= random.randint(0, 5)
-            print("You defended against the enemy's attack and did some damage back!")
-        elif player_move == "evade":
+            print(f"You defended well so the enemy did much less damage. You were even able to do some damage back!")
+        elif player_move == "e":
             evade_chance = random.choice([True, False])
         else:
             print("That isn't an option")
             continue
         if evade_chance:
-            enemy_health -= random.randint(0,3)
+            enemy["health"] -= random.randint(0,3)
             print("You evaded the enemy's attack and did some damage back!")
         else:
             player["health"]-= enemy_move
-            print(f"The enemy did {enemy_move} damage to you.")
+            print(f"The enemy attacked you and did {enemy_move} damage.")
         if player["health"] <= 0:
             return False
         if enemy["health"] <= 0:
@@ -69,6 +69,31 @@ def fight_bosses(player, cubs, mother, father):
     print("You walk into the cave, searching for Jack. You find him! A final enemy appears from around the corner and you enter combat!")
     player_won = combat(player, father)
     return player_won
+def update_turn_end_stats(player):
+    player["warmth"] -= 3
+    player["sanity"] -= 2
+    if player["warmth"] <= 0:
+        player["health"] -= 3
+        player["sanity"] -= 3
+    elif player["warmth"] <= 20:
+        player["sanity"] -= 2
+        player["health"] -= 2
+    else:
+        player["sanity"] += 1
+        player["health"] += 2
+    if player["sanity"] <= 0:
+        player["health"] -= 4
+        player["warmth"] -= 2
+    elif player["sanity"] <= 20:
+        player["health"] -= 2
+        player["warmth"] -= 1
+    if player["health"] > 20:
+        player["sanity"] += 2
+        player["warmth"] += 1
+    if player["health"] <= 20:
+        player["sanity"] -= 2
+    elif player["health"] <= 90:
+        player["health"] += 3
 items = [
     {
         "name":"heater",
@@ -78,6 +103,13 @@ items = [
         "health": 2
     },
     {
+        "name":"firestarter",
+        "description":"a firestarter kit that can help you start a fire to keep warm",
+        "warmth": 35,
+        "sanity": 0,
+        "health": 0
+    },
+    {
         "name":"radio",
         "description":"a radio that allows you to contact others and boost your sanity temporarily",
         "warmth": 2, 
@@ -85,18 +117,69 @@ items = [
         "health": 2
     },
     {
-        "name":"medkit",
-        "description":"a first aid kit that restores health when used",
+        "name":"book",
+        "description":"a thrilling novel that boosts your sanity when read",
+        "warmth": 0, 
+        "sanity": 35,
+        "health": 0
+    },
+    {
+        "name":"bandages",
+        "description":"a set of bandages that can quickly heal wounds after combat",
         "warmth": 2, 
         "sanity": 2, 
         "health": 30
+    },
+    {
+        "name":"medkit",
+        "description":"a first aid kit that can heal your injuries",
+        "warmth": 0,
+        "sanity": 0,
+        "health": 35
+    },
+    {
+        "name":"quick meal",
+        "description":"a small dinner that provides sanity, health, and warmth",
+        "warmth": 20,
+        "sanity": 20,
+        "health": 20
     }
 ]
 regular_enemies = [
     {
         "name":"Fox",
         "health":31,
+        "attack":10
+    },
+    {
+        "name":"Harbor Seal",
+        "health":50,
         "attack":5
+    },
+    {
+        "name":"Arctic Hare",
+        "health":25,
+        "attack":8
+    },
+    {
+        "name":"Snowy Owl",
+        "health":35,
+        "attack":10
+    },
+    {
+        "name":"Alpha Wolf",
+        "health":50,
+        "attack":50
+    },
+    {
+        "name":"Arctic Wolf",
+        "health":35,
+        "attack":29
+    },
+    {
+        "name":"Grizzly Bear",
+        "health":70,
+        "attack":40
     },
     {
         "name":"Musk Ox",
@@ -106,7 +189,7 @@ regular_enemies = [
     {
         "name":"Walrus",
         "health":80,
-        "attack":30
+        "attack":29
     },
 ]
 boss_enemies = [
@@ -118,7 +201,7 @@ boss_enemies = [
     {
         "name":"Mother",
         "health":80,
-        "attack":30
+        "attack":29
     },
     {
         "name":"Father",
@@ -133,14 +216,14 @@ locations = {
         "item":random.choice(items),
         "jack":False
     },
-    "island":{
-        "name":"Island",
+    "forest":{
+        "name":"Forest",
         "enemy":random.choice(regular_enemies).copy(),
         "item":random.choice(items),
-        "jack":False
+        "jack":False 
     },
-    "beach":{
-        "name":"Beach",
+    "bay":{
+        "name":"Bay",
         "enemy":random.choice(regular_enemies).copy(),
         "item":random.choice(items),
         "jack":False
@@ -193,11 +276,11 @@ player = {
     "inventory": [],
     "location": locations["city"]
 }
-print(f"Welcome to 'The Final Project: RPG'. Your name is John, and you're on a vacation to Baffin Island, Canada, with your best friend Jack. Unfortunately, you lost sight of Jack and must find him. The nine locations you may enter are the City, Basin, Mines, Beach, Island, Cove, Bay, Lake, Mountain, and Peninsula. On your journey you must manage sanity, warmth, and health in order to survive. Enjoy the adventure and watch out for enemies!")
+print(f"Welcome to 'The Final Project: RPG'. Your name is John, and you're on a vacation to Baffin Island, Canada, with your best friend Jack. Unfortunately, you lost sight of Jack and must find him. The locations you may enter are the {', '.join(locations.keys())}. On your journey you must manage health in order to survive. Warmth and sanity can make you lose health if they get too low, so try to keep those high as well! Enjoy the adventure and watch out for enemies!")
 while True:
-    turn_choice = input(f"You are currently in the {player['location']['name']}. Your stats are health:{player['health']}, warmth:{player['warmth']}, sanity:{player['sanity']}. \n You can choose to leave (l), explore (e), or use an item (i):")
+    turn_choice = input(f"You are currently in the {player['location']['name']}. Your stats are health:{player['health']}, warmth:{player['warmth']}, sanity:{player['sanity']}.\nYou can choose to leave (l), explore (e), or use an item (i):").lower().strip()
     if turn_choice == "l":
-        location_choice = input(f"The available locations are {', '.join(locations.keys())}. Where would you like to go?")
+        location_choice = input(f"The available locations are {', '.join(locations.keys())}. Where would you like to go?").lower().strip()
 
         if location_choice not in locations:
             print("That is not an existing location.")
@@ -214,7 +297,7 @@ while True:
                 break
         if new_location["item"] != None:
             player["inventory"].append(new_location["item"])
-            print(f"You found a {new_location['item']['name']} which is a {new_location['item']['description']}. It has been added to your inventory.")
+            print(f"You found a {new_location['item']['name']} which is {new_location['item']['description']}. It has been added to your inventory.")
             new_location["item"] = None
     elif turn_choice == "e":
         if player["location"] == jack_location:
@@ -226,27 +309,8 @@ while True:
         prompt_use_item(player)
     else:
         print("That is not an option")
-    player["warmth"] -= 3
-    player["sanity"] -= 2
-    if player["health"] <= 90:
-        player["health"] += 3
-    if player["warmth"] <= 20:
-        player["sanity"] -= 2
-        player["health"] -= 1
-    if player["health"] <= 20:
-        player["sanity"] -= 2
-    if player["warmth"] >= 20:
-        player["sanity"] += 1
-        player["health"] += 2
-    if player["health"] >= 20:
-        player["sanity"] += 2
-        player["warmth"] += 1
-    if player["warmth"] <= 0:
-        player["health"] -= 3
-        player["sanity"] -= 3
-    if player["sanity"] <= 0:
-        player["health"] -= 4
-    if player["health"] == 0:
+    update_turn_end_stats(player)
+    if player["health"] <= 0:
         break
 if player_won:
     print("You beat the game! Congratulations!")
