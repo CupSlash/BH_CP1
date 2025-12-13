@@ -138,6 +138,13 @@ items = [
         "health": 35
     },
     {
+        "name":"full meal",
+        "description":"a large dinner that provides sanity, health, and warmth",
+        "warmth": 30,
+        "sanity": 30,
+        "health": 50
+    },
+    {
         "name":"quick meal",
         "description":"a small dinner that provides sanity, health, and warmth",
         "warmth": 20,
@@ -197,7 +204,7 @@ regular_enemies = [
         "name":"Walrus",
         "health":80,
         "attack":29
-    }
+    },
 ]
 boss_enemies = [
     {
