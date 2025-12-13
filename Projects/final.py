@@ -143,6 +143,13 @@ items = [
         "warmth": 20,
         "sanity": 20,
         "health": 20
+    },
+    {
+        "name":"quick snack",
+        "description":"a very light snack that provides sanity, health, and warmth",
+        "warmth": 10,
+        "sanity": 10,
+        "health": 10
     }
 ]
 regular_enemies = [
@@ -152,7 +159,7 @@ regular_enemies = [
         "attack":10
     },
     {
-        "name":"Harbor Seal",
+        "name":"Harp Seal",
         "health":50,
         "attack":5
     },
@@ -190,7 +197,7 @@ regular_enemies = [
         "name":"Walrus",
         "health":80,
         "attack":29
-    },
+    }
 ]
 boss_enemies = [
     {
